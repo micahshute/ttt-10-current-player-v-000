@@ -1,8 +1,13 @@
 def turn_count(board)
-  counter = -1
-  board.each { position_taken?(board[counter += 1])}
+  turn = 0
+  board.each do |content|
+    if content == "X" || content == "O"
+      turn += 1
+    end
+  end
+  return turn
 end
 
-def position_taken?(board,index)
-  board[index] != " " && board[index] != "" && !!board[index]
+def current_player(board)
+  turn_count(board) % 2 == 0 ? "X" : "O"
 end
